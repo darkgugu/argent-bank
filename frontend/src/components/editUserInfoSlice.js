@@ -6,9 +6,6 @@ export const editUserInfoSlice = createSlice({
 	reducers: {
 		updateUsername: (currentState, action) => {
 			const user = { ...currentState, username: action.payload }
-			console.log('...currentState :', { ...currentState })
-			console.log('...currentState.user :', { ...currentState.user })
-			console.log('user :', user)
 			return user
 		},
 	},
