@@ -1,17 +1,13 @@
 import { useStore } from 'react-redux'
 import '../assets/css/main.css'
 import { editUserInfoSlice } from './editUserInfoSlice'
-import { updateUsername } from '../app/store'
 
 export const EditUserInfo = ({ setIsEditing }) => {
 	const store = useStore()
-
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		const username = document.getElementById('username').value
-		console.log('username :', username)
-		store.dispatch(updateUsername(username))
-		//store.dispatch(editUserInfoSlice.actions.updateUsername(username))
+		store.dispatch(editUserInfoSlice.actions.updateUsername(username))
 		setIsEditing(false)
 	}
 
