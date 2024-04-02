@@ -1,18 +1,37 @@
+import { useSelector } from 'react-redux'
 import '../assets/css/main.css'
 import { AccountPreview } from '../components/AccountPreview'
+import { getUsername } from '../app/selectors'
+import { useState } from 'react'
+import { EditUserInfo } from '../components/EditUserInfo'
 
 export const Account = () => {
+	const username = useSelector(getUsername)
+
+	const [isEditing, setIsEditing] = useState(false)
+
 	return (
-		<main class="main bg-dark">
-			<div class="header">
-				<h1>
-					Welcome back
-					<br />
-					Tony Jarvis!
-				</h1>
-				<button class="edit-button">Edit Name</button>
+		<main className="main bg-dark">
+			<div className="header">
+				{!isEditing ? (
+					<>
+						<h1>
+							Welcome back
+							<br />
+							{username}
+						</h1>
+						<button
+							className="edit-button"
+							onClick={() => setIsEditing(true)}
+						>
+							Edit Name
+						</button>
+					</>
+				) : (
+					<EditUserInfo setIsEditing={setIsEditing} />
+				)}
 			</div>
-			<h2 class="sr-only">Accounts</h2>
+			<h2 className="sr-only">Accounts</h2>
 			<AccountPreview
 				title="Argent Bank Checking (x8349)"
 				amount="$2,082.79"
