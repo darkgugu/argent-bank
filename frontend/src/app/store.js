@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { editUserInfoSlice } from '../components/editUserInfoSlice'
+import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 
 let state = {
 	user: {

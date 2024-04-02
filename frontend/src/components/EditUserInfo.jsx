@@ -1,6 +1,6 @@
 import { useStore } from 'react-redux'
 import '../assets/css/main.css'
-import { editUserInfoSlice } from './editUserInfoSlice'
+import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 
 export const EditUserInfo = ({ setIsEditing }) => {
 	const store = useStore()
