@@ -8,6 +8,7 @@ let state = {
 		username: 'Steve Peggy',
 		name: '',
 		email: '',
+		id: '',
 	},
 	token: '',
 }
