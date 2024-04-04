@@ -1,13 +1,38 @@
 import { useNavigate } from 'react-router-dom'
 import '../assets/css/main.css'
+import { useLoginMutation } from '../app/apiSlice'
+import { useStore } from 'react-redux'
+import { signInSlice } from '../slices/signInSlice'
 
 export const SignIn = () => {
 	const navigate = useNavigate()
+	const store = useStore()
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
-		navigate('/account/1')
+
+		const reponse = await login({
+			email: 'steve@rogers.com',
+			password: 'password456',
+		}).unwrap()
+
+		/* 		console.log('reponse :', reponse.body.token)
+		console.log('reponse.status :', reponse.status) */
+
+		if (reponse.status === 200) {
+			store.dispatch(signInSlice.actions.setToken(reponse.body.token))
+		} else {
+			console.log('error')
+		}
+
+		console.log(store.getState())
+
+		//navigate('/account/1')
 	}
+
+	const [login] = useLoginMutation()
+	//console.log('data', loginData)
+
 	return (
 		<main className="main bg-dark">
 			<section className="sign-in-content">
@@ -28,7 +53,7 @@ export const SignIn = () => {
 					</div>
 					<button
 						type="submit"
-						class="sign-in-button"
+						className="sign-in-button"
 						onClick={(e) => handleSubmit(e)}
 					>
 						Sign In
