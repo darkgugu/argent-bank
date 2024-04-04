@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom'
 import '../assets/css/main.css'
-import { useAuthMutation, useLoginMutation } from '../app/apiSlice'
+import { useGetProfileMutation, useLoginMutation } from '../app/apiSlice'
 import { useStore } from 'react-redux'
 import { signInSlice } from '../slices/signInSlice'
 
@@ -9,6 +9,7 @@ export const SignIn = () => {
 	const navigate = useNavigate()
 	const store = useStore()
 	const [login] = useLoginMutation()
+	const [getProfile] = useGetProfileMutation()
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -16,6 +17,7 @@ export const SignIn = () => {
 			email: document.getElementById('username').value,
 			password: document.getElementById('password').value,
 		}
+		console.log('Token (not set): ', store.getState().token)
 
 		const reponse = await login(formData)
 			.unwrap()
@@ -32,6 +34,13 @@ export const SignIn = () => {
 			})
 		console.log('Token (set): ', store.getState().token)
 
+		const profile = await getProfile()
+			.unwrap()
+			.then((reponse) => console.log(reponse))
+			.catch((e) => {
+				console.log(e)
+				console.log(`status code: ${e.data.status}`)
+			})
 		//navigate('/account/1')
 	}
 
