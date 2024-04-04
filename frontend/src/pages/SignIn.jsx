@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom'
 import '../assets/css/main.css'
-import { useLoginMutation } from '../app/apiSlice'
 import { useAuthMutation, useLoginMutation } from '../app/apiSlice'
 import { useStore } from 'react-redux'
 import { signInSlice } from '../slices/signInSlice'
@@ -12,25 +12,11 @@ export const SignIn = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-
-		const reponse = await login({
-			email: 'steve@rogers.com',
-			password: 'password456',
-		}).unwrap()
-
-		/* 		console.log('reponse :', reponse.body.token)
-		console.log('reponse.status :', reponse.status) */
-
-		if (reponse.status === 200) {
-			store.dispatch(signInSlice.actions.setToken(reponse.body.token))
-		} else {
-			console.log('error')
 		const formData = {
 			email: document.getElementById('username').value,
 			password: document.getElementById('password').value,
 		}
 
-		console.log(store.getState())
 		const reponse = await login(formData)
 			.unwrap()
 			.then((reponse) => {
@@ -48,9 +34,6 @@ export const SignIn = () => {
 
 		//navigate('/account/1')
 	}
-
-	const [login] = useLoginMutation()
-	//console.log('data', loginData)
 
 	return (
 		<main className="main bg-dark">
