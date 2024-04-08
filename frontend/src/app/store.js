@@ -4,12 +4,7 @@ import { signInSlice } from '../slices/signInSlice'
 import { apiSlice } from './apiSlice'
 
 let state = {
-	user: {
-		username: 'Steve Peggy',
-		name: '',
-		email: '',
-		id: '',
-	},
+	user: {},
 	token: '',
 }
 
