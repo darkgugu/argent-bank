@@ -4,9 +4,12 @@ export const editUserInfoSlice = createSlice({
 	name: 'user',
 	initialState: {},
 	reducers: {
-		updateUsername: (currentState, action) => {
-			const user = { ...currentState, username: action.payload }
+		updateuserName: (currentState, action) => {
+			const user = { ...currentState, userName: action.payload }
 			return user
+		},
+		updateUser: (currentState, action) => {
+			return action.payload
 		},
 	},
 })

@@ -4,6 +4,7 @@ import '../assets/css/main.css'
 import { useGetProfileMutation, useLoginMutation } from '../app/apiSlice'
 import { useStore } from 'react-redux'
 import { signInSlice } from '../slices/signInSlice'
+import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 
 export const SignIn = () => {
 	const navigate = useNavigate()
@@ -14,34 +15,35 @@ export const SignIn = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		const formData = {
-			email: document.getElementById('username').value,
+			email: document.getElementById('userName').value,
 			password: document.getElementById('password').value,
 		}
-		console.log('Token (not set): ', store.getState().token)
 
 		const reponse = await login(formData)
 			.unwrap()
-			.then((reponse) => {
+			.then(async (reponse) => {
 				if (reponse.status === 200) {
 					store.dispatch(
 						signInSlice.actions.setToken(reponse.body.token),
 					)
 				}
+				const profile = await getProfile()
+					.unwrap()
+					.then((reponse) => {
+						store.dispatch(
+							editUserInfoSlice.actions.updateUser(reponse.body),
+						)
+						navigate('/account')
+					})
+					.catch((e) => {
+						console.log('error: ', e)
+						console.log(`status code: ${e.data.status}`)
+					})
 			})
 			.catch((e) => {
 				console.log(e.data.message)
 				console.log(`status code: ${e.data.status}`)
 			})
-		console.log('Token (set): ', store.getState().token)
-
-		const profile = await getProfile()
-			.unwrap()
-			.then((reponse) => console.log(reponse))
-			.catch((e) => {
-				console.log(e)
-				console.log(`status code: ${e.data.status}`)
-			})
-		//navigate('/account/1')
 	}
 
 	return (
@@ -51,8 +53,8 @@ export const SignIn = () => {
 				<h1>Sign In</h1>
 				<form>
 					<div className="input-wrapper">
-						<label htmlFor="username">Username</label>
-						<input type="text" id="username" />
+						<label htmlFor="userName">userName</label>
+						<input type="text" id="userName" />
 					</div>
 					<div className="input-wrapper">
 						<label htmlFor="password">Password</label>
