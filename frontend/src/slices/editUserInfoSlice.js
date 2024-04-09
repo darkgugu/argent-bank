@@ -11,5 +11,8 @@ export const editUserInfoSlice = createSlice({
 		updateUser: (currentState, action) => {
 			return action.payload
 		},
+		clearUser: (currentState, action) => {
+			return {}
+		},
 	},
 })

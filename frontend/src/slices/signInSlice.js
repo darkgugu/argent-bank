@@ -7,5 +7,8 @@ export const signInSlice = createSlice({
 		setToken: (currentState, action) => {
 			return action.payload
 		},
+		clearToken: (currentState, action) => {
+			return ''
+		},
 	},
 })
