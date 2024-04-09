@@ -20,7 +20,12 @@ export const EditUserInfo = ({ setIsEditing }) => {
 	return (
 		<form className="EditUserInfo" onSubmit={(e) => handleSubmit(e)}>
 			<label htmlFor="userName">User name: </label>
-			<input type="text" name="userName" id="userName"></input>
+			<input
+				type="text"
+				name="userName"
+				id="userName"
+				defaultValue={user.userName}
+			></input>
 			<br />
 			<label htmlFor="firstname">First name: </label>
 			<input
