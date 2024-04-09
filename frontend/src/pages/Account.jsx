@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux'
 import '../assets/css/main.css'
 import { AccountPreview } from '../components/AccountPreview'
-import { getuserName } from '../app/selectors'
+import { getUser } from '../app/selectors'
 import { useState } from 'react'
 import { EditUserInfo } from '../components/EditUserInfo'
 
 export const Account = () => {
-	const userName = useSelector(getuserName)
+	const user = useSelector(getUser)
 
 	const [isEditing, setIsEditing] = useState(false)
 
@@ -18,7 +18,7 @@ export const Account = () => {
 						<h1>
 							Welcome back
 							<br />
-							{userName}
+							{user.firstName} {user.lastName}
 						</h1>
 						<button
 							className="edit-button"
