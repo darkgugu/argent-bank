@@ -53,7 +53,7 @@ export const SignIn = () => {
 				<h1>Sign In</h1>
 				<form>
 					<div className="input-wrapper">
-						<label htmlFor="userName">userName</label>
+						<label htmlFor="userName">Username</label>
 						<input type="text" id="userName" />
 					</div>
 					<div className="input-wrapper">
