@@ -13,7 +13,7 @@ export const EditUserInfo = ({ setIsEditing }) => {
 		e.preventDefault()
 		const userName = document.getElementById('userName').value
 		store.dispatch(editUserInfoSlice.actions.updateuserName(userName))
-		const reponse = updateuserName({
+		updateuserName({
 			userName: userName,
 		})
 			.unwrap()
