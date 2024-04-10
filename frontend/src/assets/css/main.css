@@ -290,3 +290,23 @@ body {
     width: 200px;
   }
 }
+
+.edit-user-button{
+  padding: 10px 25px;
+  font-size: 1rem;
+  margin: 15px 10px;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+}
+
+.edit-user-field{
+  border-radius: 3px;
+  padding: 5px;
+  margin-top: 8px;
+}
+
+.uneditable{
+  color: #A3A3A3;
+  background-color: #E7E7E7;
+}

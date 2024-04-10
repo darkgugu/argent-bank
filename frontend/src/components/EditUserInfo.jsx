@@ -21,6 +21,7 @@ export const EditUserInfo = ({ setIsEditing }) => {
 		<form className="EditUserInfo" onSubmit={(e) => handleSubmit(e)}>
 			<label htmlFor="userName">User name: </label>
 			<input
+				className="edit-user-field"
 				type="text"
 				name="userName"
 				id="userName"
@@ -29,6 +30,7 @@ export const EditUserInfo = ({ setIsEditing }) => {
 			<br />
 			<label htmlFor="firstname">First name: </label>
 			<input
+				className="edit-user-field uneditable"
 				type="text"
 				name="firstname"
 				id="firstname"
@@ -38,6 +40,7 @@ export const EditUserInfo = ({ setIsEditing }) => {
 			<br />
 			<label htmlFor="lastname">Last name: </label>
 			<input
+				className="edit-user-field uneditable"
 				type="text"
 				name="lastname"
 				id="lastname"
@@ -45,8 +48,12 @@ export const EditUserInfo = ({ setIsEditing }) => {
 				readOnly
 			></input>
 			<br />
-			<button type="submit">Save</button>
-			<button onClick={(e) => leave(e)}>Cancel</button>
+			<button className="edit-user-button" type="submit">
+				Save
+			</button>
+			<button className="edit-user-button" onClick={(e) => leave(e)}>
+				Cancel
+			</button>
 		</form>
 	)
 }
