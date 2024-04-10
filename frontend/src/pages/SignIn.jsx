@@ -5,12 +5,14 @@ import { useGetProfileMutation, useLoginMutation } from '../app/apiSlice'
 import { useStore } from 'react-redux'
 import { signInSlice } from '../slices/signInSlice'
 import { editUserInfoSlice } from '../slices/editUserInfoSlice'
+import { useState } from 'react'
 
 export const SignIn = () => {
 	const navigate = useNavigate()
 	const store = useStore()
 	const [login] = useLoginMutation()
 	const [getProfile] = useGetProfileMutation()
+	const [isBadCredentials, setIsBadCredentials] = useState(false)
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -22,6 +24,7 @@ export const SignIn = () => {
 		const reponse = await login(formData)
 			.unwrap()
 			.then(async (reponse) => {
+				setIsBadCredentials(false)
 				if (reponse.status === 200) {
 					store.dispatch(
 						signInSlice.actions.setToken(reponse.body.token),
@@ -48,6 +51,7 @@ export const SignIn = () => {
 			.catch((e) => {
 				console.log(e.data.message)
 				console.log(`status code: ${e.data.status}`)
+				setIsBadCredentials(true)
 			})
 	}
 
@@ -69,6 +73,11 @@ export const SignIn = () => {
 						<input type="checkbox" id="remember-me" />
 						<label htmlFor="remember-me">Remember me</label>
 					</div>
+					{isBadCredentials ? (
+						<p style={{ color: 'red' }}>
+							Wrong username or password
+						</p>
+					) : null}
 					<button
 						type="submit"
 						className="sign-in-button"
