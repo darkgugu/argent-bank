@@ -14,6 +14,7 @@ export const Header = () => {
 	const handleSignOut = (e) => {
 		store.dispatch(signInSlice.actions.clearToken())
 		store.dispatch(editUserInfoSlice.actions.clearUser())
+		sessionStorage.clear()
 	}
 
 	return (
