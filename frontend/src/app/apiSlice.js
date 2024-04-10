@@ -31,7 +31,18 @@ export const apiSlice = createApi({
 				body,
 			}),
 		}),
+		updateUsername: builder.mutation({
+			query: (body) => ({
+				url: 'user/profile',
+				method: 'PUT',
+				body,
+			}),
+		}),
 	}),
 })
 
-export const { useLoginMutation, useGetProfileMutation } = apiSlice
+export const {
+	useLoginMutation,
+	useGetProfileMutation,
+	useUpdateUsernameMutation,
+} = apiSlice
