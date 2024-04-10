@@ -1,14 +1,35 @@
 import { useSelector } from 'react-redux'
 import '../assets/css/main.css'
 import { AccountPreview } from '../components/AccountPreview'
-import { getUser } from '../app/selectors'
-import { useState } from 'react'
+import { getToken, getUser } from '../app/selectors'
+import { useEffect, useState } from 'react'
 import { EditUserInfo } from '../components/EditUserInfo'
+import { useStore } from 'react-redux'
+import { signInSlice } from '../slices/signInSlice'
+import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 
 export const Account = () => {
+	const store = useStore()
+	const token = useSelector(getToken)
+
+	useEffect(() => {
+		if (token !== sessionStorage.getItem('token')) {
+			store.dispatch(
+				signInSlice.actions.setToken(sessionStorage.getItem('token')),
+			)
+			store.dispatch(
+				editUserInfoSlice.actions.updateUser(
+					JSON.parse(sessionStorage.getItem('user')),
+				),
+			)
+		}
+	})
+
 	const user = useSelector(getUser)
 
 	const [isEditing, setIsEditing] = useState(false)
+
+	//console.log('session token :', sessionStorage.getItem('token'))
 
 	return (
 		<main className="main bg-dark">

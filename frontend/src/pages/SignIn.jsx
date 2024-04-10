@@ -26,12 +26,17 @@ export const SignIn = () => {
 					store.dispatch(
 						signInSlice.actions.setToken(reponse.body.token),
 					)
+					sessionStorage.setItem('token', reponse.body.token)
 				}
 				const profile = await getProfile()
 					.unwrap()
 					.then((reponse) => {
 						store.dispatch(
 							editUserInfoSlice.actions.updateUser(reponse.body),
+						)
+						sessionStorage.setItem(
+							'user',
+							JSON.stringify(reponse.body),
 						)
 						navigate('/account')
 					})
