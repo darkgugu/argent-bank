@@ -2,14 +2,23 @@ import { useSelector, useStore } from 'react-redux'
 import '../assets/css/main.css'
 import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 import { getUser } from '../app/selectors'
+import { useUpdateUsernameMutation } from '../app/apiSlice'
 
 export const EditUserInfo = ({ setIsEditing }) => {
 	const store = useStore()
 	const user = useSelector(getUser)
+	const [updateuserName] = useUpdateUsernameMutation()
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		const userName = document.getElementById('userName').value
 		store.dispatch(editUserInfoSlice.actions.updateuserName(userName))
+		const reponse = updateuserName({
+			userName: userName,
+		})
+			.unwrap()
+			.then()
+			.catch((e) => console.log(e))
 		setIsEditing(false)
 	}
 
