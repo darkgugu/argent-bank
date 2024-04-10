@@ -4,6 +4,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 
 body {
@@ -19,7 +20,10 @@ body {
 
 .bg-dark {
   background-color: #12002b;
-  /* padding: 1% 0; */
+  height: 86vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .sr-only {
@@ -40,7 +44,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 20px;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
 .main-nav a {
@@ -207,7 +214,15 @@ body {
   display: flex;
   justify-content: center;
   border-top: 2px solid #ccc;
-  padding: 2rem 0 1.5rem;
+  /* padding: 2rem 0 1.5rem; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
 }
 
 .footer-text {
@@ -263,6 +278,7 @@ body {
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  padding-top: 20px;
 }
 
 .transaction-button {
