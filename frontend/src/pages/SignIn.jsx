@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate } from 'react-router-dom'
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 import { useGetProfileMutation, useLoginMutation } from '../app/apiSlice'
 import { useStore } from 'react-redux'
 import { signInSlice } from '../slices/signInSlice'

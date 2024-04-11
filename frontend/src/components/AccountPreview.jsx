@@ -1,4 +1,4 @@
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 
 export const AccountPreview = ({ title, amount, desc }) => {
 	return (

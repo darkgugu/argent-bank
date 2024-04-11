@@ -1,4 +1,4 @@
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 import logo from '../assets/img/argentBankLogo.png'
 import { Link, useLocation } from 'react-router-dom'
 import { useSelector, useStore } from 'react-redux'

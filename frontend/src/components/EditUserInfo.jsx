@@ -1,5 +1,5 @@
 import { useSelector, useStore } from 'react-redux'
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 import { editUserInfoSlice } from '../slices/editUserInfoSlice'
 import { getUser } from '../app/selectors'
 import { useUpdateUsernameMutation } from '../app/apiSlice'

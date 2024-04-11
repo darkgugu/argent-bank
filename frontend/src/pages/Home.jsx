@@ -1,4 +1,4 @@
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 import { HomepageFeatures } from '../components/HomepageFeatures'
 import chatIcon from '../assets/img/icon-chat.png'
 import moneyIcon from '../assets/img/icon-money.png'

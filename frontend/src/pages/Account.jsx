@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 import { AccountPreview } from '../components/AccountPreview'
 import { getToken, getUser } from '../app/selectors'
 import { useEffect, useState } from 'react'

@@ -1,4 +1,4 @@
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 
 export const Footer = () => {
 	const year = new Date().getFullYear()

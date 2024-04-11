@@ -1,4 +1,4 @@
-import '../assets/css/main.css'
+import '../assets/css/main.min.css'
 
 export const HomepageFeatures = ({ title, img, alt, text }) => {
 	return (
