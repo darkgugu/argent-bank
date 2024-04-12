@@ -29,8 +29,6 @@ export const Account = () => {
 
 	const [isEditing, setIsEditing] = useState(false)
 
-	//console.log('session token :', sessionStorage.getItem('token'))
-
 	return (
 		<main className="main bg-dark">
 			<div className="header">
